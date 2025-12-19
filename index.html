@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-shield-alt"></i> Password Strength Checker</h1>
+            <p class="subtitle">Test your password security instantly</p>
+        </header>
+        
+        <main class="checker-container">
+            <div class="input-group">
+                <div class="password-input-wrapper">
+                    <input 
+                        type="password" 
+                        id="passwordInput" 
+                        placeholder="Enter a password"
+                        autocomplete="off"
+                    >
+                    <button id="togglePassword" class="toggle-btn">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <button id="checkButton" class="submit-btn">
+                    <i class="fas fa-check"></i> Check Password
+                </button>
+            </div>
+            
+            <div class="results-container" id="resultsContainer" style="display: none;">
+                <!-- Strength Meter -->
+                <div class="strength-section">
+                    <div class="score-header">
+                        <h3>Password Strength</h3>
+                        <span id="strengthText" class="strength-text">-</span>
+                    </div>
+                    
+                    <!-- Strength Scale -->
+                    <div class="strength-meter">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <div class="scale-labels">
+                            <span>Very Weak</span>
+                            <span>Weak</span>
+                            <span>Fair</span>
+                            <span>Good</span>
+                            <span>Excellent</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Numerical Score - FIXED ALIGNMENT -->
+                    <div class="score-display">
+                        <div class="score-box">
+                            <span id="scoreValue">0.0</span>
+                            <span class="score-max">/10</span>
+                        </div>
+                        <div class="score-label">Complexity Score</div>
+                    </div>
+                </div>
+                
+                <!-- Security Information -->
+                <div class="security-info">
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="info-content">
+                            <h4>Time to Crack</h4>
+                            <p id="crackTime">Enter a password to check</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-lock"></i>
+                        <div class="info-content">
+                            <h4>Security Tips</h4>
+                            <ul id="securityTips">
+                                <li>Use at least 12 characters</li>
+                                <li>Mix uppercase and lowercase letters</li>
+                                <li>Include numbers and special characters</li>
+                                <li>Avoid common words and patterns</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="password-examples">
+                <h4>Try These Examples:</h4>
+                <div class="example-buttons">
+                    <button class="example-btn" data-password="password123">password123</button>
+                    <button class="example-btn" data-password="MyDog2023!">MyDog2023!</button>
+                    <button class="example-btn" data-password="Tr0ub4dor&3">Tr0ub4dor&3</button>
+                    <button class="example-btn" data-password="Xy7#qP!9@mK$3">Xy7#qP!9@mK$3</button>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>This tool estimates password strength based on complexity. Actual security may vary.</p>
+            <p>Assumes a computer making 1 billion guesses per second.</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
